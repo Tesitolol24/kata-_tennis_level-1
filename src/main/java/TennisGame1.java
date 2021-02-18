@@ -5,6 +5,7 @@ public class TennisGame1 implements TennisGame {
     private int mScore2 = 0;
     private String player1Name;
     private String player2Name;
+    public String score = "";
 
     public TennisGame1(String player1Name, String player2Name) {
         this.player1Name = player1Name;
@@ -18,29 +19,29 @@ public class TennisGame1 implements TennisGame {
             mScore2 += 1;
     }
 
-    public String getScore() {
-        String score = "";
-        int tempScore=0;
+    public void equalsScore(){
         if (mScore1==mScore2)
         {
             switch (mScore1)
             {
                 case 0:
-                        score = "Love-All";
+                    score = "Love-All";
                     break;
                 case 1:
-                        score = "Fifteen-All";
+                    score = "Fifteen-All";
                     break;
                 case 2:
-                        score = "Thirty-All";
+                    score = "Thirty-All";
                     break;
                 default:
-                        score = "Deuce";
+                    score = "Deuce";
                     break;
-                
             }
         }
-        else if (mScore1>=4 || mScore2>=4)
+    }
+
+    public void highestScore() {
+        if (mScore1>=4 || mScore2>=4)
         {
             int minusResult = mScore1-mScore2;
             if (minusResult==1) score ="Advantage player1";
@@ -48,7 +49,13 @@ public class TennisGame1 implements TennisGame {
             else if (minusResult>=2) score = "Win for player1";
             else score ="Win for player2";
         }
-        else
+    }
+
+    public String getScore() {
+        equalsScore();
+        highestScore();
+        int tempScore=0;
+        if ((mScore1<4 && mScore2<4) &&mScore2!=mScore1)
         {
             for (int i=1; i<3; i++)
             {
