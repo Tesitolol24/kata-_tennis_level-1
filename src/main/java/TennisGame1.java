@@ -3,8 +3,8 @@ public class TennisGame1 implements TennisGame {
     
     private int mScore1 = 0;
     private int mScore2 = 0;
-    private String player1Name;
-    private String player2Name;
+    final private String player1Name;
+    final private String player2Name;
     public String score = "";
 
     public TennisGame1(String player1Name, String player2Name) {
@@ -13,12 +13,8 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName == player1Name)
-            mScore1 += 1;
-        else
-            mScore2 += 1;
+        int i = (playerName == player1Name) ? (mScore1 += 1) : (mScore2 += 1);
     }
-
     public void equalsScore() {
         if (mScore1==mScore2)
         {
@@ -54,7 +50,7 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
         equalsScore();
         highestScore();
-        int tempScore=0;
+        int tempScore;
         if ((mScore2<4 && mScore1<4)&& mScore2!=mScore1)
         {
             for (int i=1; i<3; i++)
