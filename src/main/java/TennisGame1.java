@@ -19,7 +19,7 @@ public class TennisGame1 implements TennisGame {
             mScore2 += 1;
     }
 
-    public void equalsScore(){
+    public void equalsScore() {
         if (mScore1==mScore2)
         {
             switch (mScore1)
@@ -41,7 +41,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void highestScore() {
-        if (mScore1>=4 || mScore2>=4)
+        if ((mScore1>=4 || mScore2>=4)&&mScore2!=mScore1)
         {
             int minusResult = mScore1-mScore2;
             if (minusResult==1) score ="Advantage player1";
@@ -55,7 +55,7 @@ public class TennisGame1 implements TennisGame {
         equalsScore();
         highestScore();
         int tempScore=0;
-        if ((mScore1<4 && mScore2<4) &&mScore2!=mScore1)
+        if ((mScore2<4 && mScore1<4)&& mScore2!=mScore1)
         {
             for (int i=1; i<3; i++)
             {
